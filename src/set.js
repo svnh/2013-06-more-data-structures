@@ -7,7 +7,9 @@ var makeSet = function(){
 var setPrototype = {};
 
 setPrototype.add = function(value){
-  this._storage[value]=value;
+  if (typeof value === 'string'){
+    this._storage[value] = value;
+  }
 };
 
 setPrototype.contains = function(item){
@@ -19,7 +21,3 @@ setPrototype.remove = function(passed){
     delete this._storage[passed];
   }
 };
-
-
-// set['josh']='josh'
-//  'josh'

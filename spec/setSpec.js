@@ -24,8 +24,10 @@ describe("set", function() {
     set.add('josh');
     set.add('bill');
     set.add('jose');
-    expect(set.contains('bill')).toEqual(true);
+    set.add(9);
+    expect(set.contains(9)).toEqual(false);
     set.remove('bill');
+    console.log(set);
     expect(set.contains('bill')).toEqual(false);
   });
 
