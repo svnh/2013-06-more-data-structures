@@ -29,5 +29,9 @@ describe("linkedList", function() {
     expect(linkedList.removeHead()).toEqual(5);
     expect(linkedList.head.value).toEqual(10);
   });
+
+  it("should return undefined when trying to remove head from empty linkedList", function() {
+    expect(linkedList.removeHead()).toEqual(undefined);
+  });
   // add more tests here to test the functionality of linkedList
 });

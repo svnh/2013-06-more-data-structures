@@ -15,6 +15,9 @@ var makeLinkedList = function(){
   };
 
   newLinkedList.removeHead = function(){
+    if (newLinkedList.head === null) {
+      return undefined;
+    }
     var temp = newLinkedList.head.value;
     newLinkedList.head = newLinkedList.head.next;
     return temp;
@@ -29,11 +32,6 @@ var makeLinkedList = function(){
       current=current.next;
     }
     return false;
-
-    // console.log(newLinkedList.head.value);
-    // console.log(newLinkedList.head.next);
-    // console.log(newLinkedList.head.next.next);
-    // console.log(newLinkedList.tail);
   };
 
   return newLinkedList;

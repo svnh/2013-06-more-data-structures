@@ -14,32 +14,24 @@ HashTable.prototype.insert = function(key, value){
     if (this._storage.get(index) === undefined){
       this._storage.set(index, [[key, value]]);
   } else {
-    for(var i = 0; i < this._storage.get(index).length; i++){
-      if (this._storage.get(index)[i][0]=== key){
-        return ;
-      }
+    if (this.retrieve(key) === value) {
+      return;
     }
     this._storage.get(index).push([key, value]);
   }
 };
 
 HashTable.prototype.retrieve = function(key){
-  var index = getIndexBelowMaxForKey(key, this._limit);
-  if (this._storage.get(index) === undefined){
-    return;
-  }
-  for(var i = 0; i < this._storage.get(index).length; i++){
-    if (this._storage.get(index)[i][0]=== key){
-      return this._storage.get(index)[i][1];
+  var index = this._storage.get(getIndexBelowMaxForKey(key, this._limit));
+  var valueFound;
+  _.each(index, function(value, index, list){
+    if(value[0] === key){
+      valueFound=value[1];
     }
-  }
-
-  return this._storage.get(index);
+  });
+  return valueFound;
 };
 
 HashTable.prototype.remove = function(key){
-  if (this.retrieve(key)) {
-    var index = getIndexBelowMaxForKey(key, this._limit);
-    this._storage.set(index, undefined);
-  }
+  this.insert(key, undefined);
 };

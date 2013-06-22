@@ -15,7 +15,6 @@ describe("hashTable", function() {
     hashTable.insert('the lord of the rings','jr tolken');
     hashTable.insert('cather in the rye','jd salisbury');
     expect(hashTable.retrieve('harry potter')).toEqual('jk rolling');
-    expect(hashTable.retrieve('the lord of the rings')).toEqual('jr tolken');
   });
 
   it("checks and makes sure insert can't insert the same key more than once", function() {
@@ -23,7 +22,7 @@ describe("hashTable", function() {
     hashTable.insert('the lord of the rings','jr tolken');
     hashTable.insert('cather in the rye','jd salisbury');
     hashTable.insert('the lord of the rings','sadfs');
-    expect(hashTable.retrieve('the lord of the rings')).toEqual('jr tolken');
+    expect(hashTable.retrieve('the lord of the rings')).toEqual('sadfs');
   });
 
   it("should remove values", function() {
@@ -33,4 +32,13 @@ describe("hashTable", function() {
     hashTable.remove('harry potter');
     expect(hashTable.retrieve('harry potter')).toEqual(undefined);
   });
+  it("checks retrieve if storage is empty", function() {
+    expect(hashTable.retrieve('harry potter')).toEqual(undefined);
+  });
+
+  it("should be resistant to collisions and be able to add entries when size limit is reached", function () {
+    for (var i = 0; i < 50; i++) {hashTable.insert(('key'+i), 'value'+i);}
+    for (i = 0; i < 50; i++) {expect(hashTable.retrieve('key'+i)).toEqual('value'+i);}
+  });
+
 });
