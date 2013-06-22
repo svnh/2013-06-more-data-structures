@@ -27,7 +27,6 @@ describe("set", function() {
     set.add(9);
     expect(set.contains(9)).toEqual(false);
     set.remove('bill');
-    console.log(set);
     expect(set.contains('bill')).toEqual(false);
   });
 

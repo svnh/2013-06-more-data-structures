@@ -33,5 +33,33 @@ describe("linkedList", function() {
   it("should return undefined when trying to remove head from empty linkedList", function() {
     expect(linkedList.removeHead()).toEqual(undefined);
   });
+
+  it("should make previous point to the node behind", function(){
+    linkedList.addToTail(5);
+    linkedList.addToTail(10);
+    linkedList.addToTail(20);
+    linkedList.addToTail(40);
+    expect(linkedList.tail.previous.value).toEqual(20);
+  });
+
+  it("should add a node to the head of the linked list", function(){
+    linkedList.addToTail(5);
+    linkedList.addToTail(10);
+    linkedList.addToTail(20);
+    linkedList.addToTail(40);
+    linkedList.addToHead(8);
+    expect(linkedList.head.value).toEqual(8);
+  });
+
+  it("removes the last node from the list and returns its value", function(){
+    linkedList.addToTail(5);
+    linkedList.addToTail(10);
+    linkedList.addToTail(20);
+    linkedList.addToTail(40);
+    linkedList.removeTail();
+    expect(linkedList.tail.value).toEqual(20);
+  });
+
+
   // add more tests here to test the functionality of linkedList
 });
