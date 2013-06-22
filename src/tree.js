@@ -1,5 +1,6 @@
 var makeTree = function(something){
   var newTree = {};
+  newTree.parent = null;
   newTree.value = something;
   newTree.children =[];
   extend(newTree, treeMethods);
@@ -14,8 +15,17 @@ var extend = function(to, from){
 
 var treeMethods = {};
 
+this.parent = this.value;
+
 treeMethods.addChild = function(pv){
-  this.children.push(makeTree(pv));
+  var child = makeTree(pv);
+  this.children.push(child);
+  child.parent = this;
+};
+
+treeMethods.removeParent = function(){
+  delete this.parent.children[0];
+  delete this.parent;
 };
 
 treeMethods.contains = function(findnum){
