@@ -1,5 +1,5 @@
 var makeSet = function(){
-  var set = Object.create(setPrototype); // fix me
+  var set = Object.create(setPrototype);
   set._storage = {};
   return set;
 };
@@ -7,13 +7,15 @@ var makeSet = function(){
 var setPrototype = {};
 
 setPrototype.add = function(value){
-  if (typeof value === 'string'){
+  if (this.contains(value)){
+    return;
+  } else if (typeof value === 'string'){
     this._storage[value] = value;
   }
 };
 
 setPrototype.contains = function(item){
-  return this._storage[item]=== item;
+  return this._storage[item] === item;
 };
 
 setPrototype.remove = function(passed){

@@ -24,12 +24,12 @@ var makeLinkedList = function(){
   };
 
   newLinkedList.contains = function(value){
-    var current=newLinkedList.head;
+    var current = newLinkedList.head;
     while(current.next !== null){
-      if (current.value==value){
+      if (current.value === value){
         return true;
       }
-      current=current.next;
+      current = current.next;
     }
     return false;
   };
@@ -41,11 +41,6 @@ var makeNode = function(value){
   var newNode = {};
   newNode.value = value;
   newNode.next = null;
-
-
-  newNode.removeNextNode = function(){
-  };
-
   return newNode;
 };
 

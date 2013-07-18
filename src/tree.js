@@ -1,6 +1,6 @@
-var makeTree = function(something){
+var makeTree = function(value){
   var newTree = {};
-  newTree.value = something;
+  newTree.value = value;
   newTree.children =[];
   extend(newTree, treeMethods);
   return newTree;
@@ -14,10 +14,10 @@ var extend = function(to, from){
 
 var treeMethods = {};
 
-treeMethods.addChild = function(pv){
-  this.children.push(makeTree(pv));
+treeMethods.addChild = function(value){
+  this.children.push(makeTree(value));
 };
 
-treeMethods.contains = function(findnum){
-  return this.value === findnum || _.any(_.invoke(this.children, 'contains', findnum));
+treeMethods.contains = function(value){
+  return this.value === value || _.any(_.invoke(this.children, 'contains', value));
 };

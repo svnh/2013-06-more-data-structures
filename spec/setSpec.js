@@ -23,6 +23,7 @@ describe("set", function() {
   it("takes any string and removes it from the set, if present", function() {
     set.add('josh');
     set.add('bill');
+    set.add('bill');
     set.add('jose');
     set.add(9);
     expect(set.contains(9)).toEqual(false);
