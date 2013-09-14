@@ -21,19 +21,6 @@ describe("tree", function() {
    expect(tree.children[0].value).toEqual(5);
   });
 
-//contains should:
-//takes any input and returns a boolean reflecting whether it can be found as the 
-//value of the target node or any descendant node
- //  it("contains should return true if found at root", function(){
- //     expect(tree.contains(6)).toEqual(true);
- //  });
-
- // it("contains should check children for value and return true if found", function(){
- //    tree.addChild(3);
- //    tree.addChild(48);
- //    tree.addChild(12);
- //    expect(tree.contains(48)).toEqual(true);
- //  });
   it("contains should check children for value and return true if found", function(){
     tree.addChild(3);
     tree.addChild(48);
@@ -41,13 +28,24 @@ describe("tree", function() {
     tree.children[1].addChild(88);
     tree.children[2].addChild(108);
     tree.children[2].addChild(118);
-
-
     expect(tree.contains(88)).toEqual(true);
     expect(tree.contains(118)).toEqual(true);
-
-    //expect(tree.contains(6)).toEqual(true);
-
   });
-  // Add more tests here to test the functionality of tree.
+
+  it("parent refers to the parent node or null when there is no node", function(){
+    tree.addChild(3);
+    tree.addChild(48);
+    tree.addChild(12);
+    tree.children[0].addChild(88);
+    expect(tree.children[0].children[0].parent.value).toEqual(3);
+  });
+
+  it("disassociates the tree with its parent (in both directions)", function(){
+    tree.addChild(3);
+    tree.addChild(48);
+    tree.addChild(12);
+    tree.children[0].removeParent();
+    expect(tree.contains(3)).toEqual(false);
+  });
+
 });
